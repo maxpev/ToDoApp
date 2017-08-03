@@ -34,7 +34,7 @@ public class TodoFragment extends Fragment {
         final ListView listView = (ListView) view.findViewById(R.id.listView);
 
         // Create a new Adapter
-        final ArrayAdapter<TaskNode> adapter = new ArrayAdapter<TaskNode>(view.getContext(),
+        final ArrayAdapter<TaskNode> adapter = new ArrayAdapter<>(view.getContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1);
 
         // Assign adapter to ListView
@@ -70,10 +70,8 @@ public class TodoFragment extends Fragment {
 
             // The following functions are also required in ChildEventListener implementations.
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d("ffff", dataSnapshot.toString());
                 TaskNode node = dataSnapshot.getValue(TaskNode.class);
                 if (node.done) {
-                    Log.d("ffff", node.toString());
                     adapter.remove(node);
                 }
             }
@@ -132,8 +130,6 @@ public class TodoFragment extends Fragment {
                 ;
             }
         });
-
-
 
         return view;
     }
